@@ -1,0 +1,13 @@
+
+> task-manager-frontend@1.0.0 dev
+> vite
+
+[33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.[39m
+
+  VITE v5.4.19  ready in 355 ms
+
+  ➜  Local:   http://localhost:3000/
+  ➜  Network: http://172.27.98.43:3000/
+4:48:15 PM [vite] hmr update /src/pages/Tasks.jsx, /src/index.css
+5:07:18 PM [vite] hmr update /src/pages/Tasks.jsx, /src/index.css
+5:08:41 PM [vite] hmr update /src/components/Layout.jsx, /src/index.css

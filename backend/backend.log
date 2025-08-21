@@ -1,0 +1,200 @@
+
+> task-manager-backend@1.0.0 start
+> node src/server.js
+
+🚀 Server running on port 5000
+📊 Environment: development
+🔗 Health check: http://localhost:5000/health
+✅ Database connected successfully
+Executed query {
+  text: 'SELECT id, name, email, password, avatar_url, created_at FROM users WHERE email = $1',
+  duration: 106,
+  rows: 1
+}
+::ffff:127.0.0.1 - - [21/Aug/2025:11:59:43 +0000] "POST /api/auth/login HTTP/1.1" 200 400 "-" "curl/7.81.0"
+Executed query {
+  text: 'SELECT id, name, email, password, avatar_url, created_at FROM users WHERE email = $1',
+  duration: 3,
+  rows: 1
+}
+::1 - - [21/Aug/2025:11:59:47 +0000] "POST /api/auth/login HTTP/1.1" 200 400 "http://localhost:3000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+Executed query {
+  text: 'SELECT id, name, email, avatar_url, created_at FROM users WHERE id = $1',
+  duration: 3,
+  rows: 1
+}
+Executed query {
+  text: 'SELECT \n' +
+    '        COUNT(*) as total_tasks,\n' +
+    "        COUNT(CASE WHEN status = 'completed' THEN 1 END) as completed_tasks,\n" +
+    "        COUNT(CASE WHEN status = 'pending' THEN 1 END) as pending_tasks,\n" +
+    "        COUNT(CASE WHEN status = 'in_progress' THEN 1 END) as in_progress_tasks,\n" +
+    "        COUNT(CASE WHEN due_date < CURRENT_DATE AND status != 'completed' THEN 1 END) as overdue_tasks,\n" +
+    "        COUNT(CASE WHEN due_date = CURRENT_DATE AND status != 'completed' THEN 1 END) as due_today_tasks\n" +
+    '      FROM tasks \n' +
+    '      WHERE user_id = $1',
+  duration: 4,
+  rows: 1
+}
+Executed query {
+  text: 'SELECT \n' +
+    '        t.id, t.title, t.status, t.priority, t.due_date, t.created_at,\n' +
+    '        c.name as category_name, c.color as category_color\n' +
+    '      FROM tasks t\n' +
+    '      LEFT JOIN categories c ON t.category_id = c.id\n' +
+    '      WHERE t.user_id = $1\n' +
+    '      ORDER BY t.created_at DESC\n' +
+    '      LIMIT 5',
+  duration: 9,
+  rows: 4
+}
+Executed query {
+  text: 'SELECT \n' +
+    '        t.id, t.title, t.status, t.priority, t.due_date,\n' +
+    '        c.name as category_name, c.color as category_color\n' +
+    '      FROM tasks t\n' +
+    '      LEFT JOIN categories c ON t.category_id = c.id\n' +
+    '      WHERE t.user_id = $1 \n' +
+    "        AND t.due_date BETWEEN CURRENT_DATE AND CURRENT_DATE + INTERVAL '7 days'\n" +
+    "        AND t.status != 'completed'\n" +
+    '      ORDER BY t.due_date ASC\n' +
+    '      LIMIT 5',
+  duration: 2,
+  rows: 1
+}
+::1 - - [21/Aug/2025:11:59:47 +0000] "GET /api/users/dashboard HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+Executed query {
+  text: 'SELECT id, name, email, avatar_url, created_at FROM users WHERE id = $1',
+  duration: 5,
+  rows: 1
+}
+Executed query {
+  text: 'SELECT \n' +
+    '        COUNT(*) as total_tasks,\n' +
+    "        COUNT(CASE WHEN status = 'completed' THEN 1 END) as completed_tasks,\n" +
+    "        COUNT(CASE WHEN status = 'pending' THEN 1 END) as pending_tasks,\n" +
+    "        COUNT(CASE WHEN status = 'in_progress' THEN 1 END) as in_progress_tasks,\n" +
+    "        COUNT(CASE WHEN due_date < CURRENT_DATE AND status != 'completed' THEN 1 END) as overdue_tasks,\n" +
+    "        COUNT(CASE WHEN due_date = CURRENT_DATE AND status != 'completed' THEN 1 END) as due_today_tasks\n" +
+    '      FROM tasks \n' +
+    '      WHERE user_id = $1',
+  duration: 2,
+  rows: 1
+}
+Executed query {
+  text: 'SELECT \n' +
+    '        t.id, t.title, t.status, t.priority, t.due_date, t.created_at,\n' +
+    '        c.name as category_name, c.color as category_color\n' +
+    '      FROM tasks t\n' +
+    '      LEFT JOIN categories c ON t.category_id = c.id\n' +
+    '      WHERE t.user_id = $1\n' +
+    '      ORDER BY t.created_at DESC\n' +
+    '      LIMIT 5',
+  duration: 5,
+  rows: 4
+}
+Executed query {
+  text: 'SELECT \n' +
+    '        t.id, t.title, t.status, t.priority, t.due_date,\n' +
+    '        c.name as category_name, c.color as category_color\n' +
+    '      FROM tasks t\n' +
+    '      LEFT JOIN categories c ON t.category_id = c.id\n' +
+    '      WHERE t.user_id = $1 \n' +
+    "        AND t.due_date BETWEEN CURRENT_DATE AND CURRENT_DATE + INTERVAL '7 days'\n" +
+    "        AND t.status != 'completed'\n" +
+    '      ORDER BY t.due_date ASC\n' +
+    '      LIMIT 5',
+  duration: 2,
+  rows: 1
+}
+::1 - - [21/Aug/2025:11:59:47 +0000] "GET /api/users/dashboard HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+Executed query {
+  text: 'SELECT id, name, email, avatar_url, created_at FROM users WHERE id = $1',
+  duration: 3,
+  rows: 1
+}
+Executed query {
+  text: 'SELECT \n' +
+    '        COUNT(*) as total_tasks,\n' +
+    "        COUNT(CASE WHEN status = 'completed' THEN 1 END) as completed_tasks,\n" +
+    "        COUNT(CASE WHEN status = 'pending' THEN 1 END) as pending_tasks,\n" +
+    "        COUNT(CASE WHEN status = 'in_progress' THEN 1 END) as in_progress_tasks,\n" +
+    "        COUNT(CASE WHEN due_date < CURRENT_DATE AND status != 'completed' THEN 1 END) as overdue_tasks,\n" +
+    "        COUNT(CASE WHEN due_date = CURRENT_DATE AND status != 'completed' THEN 1 END) as due_today_tasks\n" +
+    '      FROM tasks \n' +
+    '      WHERE user_id = $1',
+  duration: 2,
+  rows: 1
+}
+Executed query {
+  text: 'SELECT \n' +
+    '        t.id, t.title, t.status, t.priority, t.due_date, t.created_at,\n' +
+    '        c.name as category_name, c.color as category_color\n' +
+    '      FROM tasks t\n' +
+    '      LEFT JOIN categories c ON t.category_id = c.id\n' +
+    '      WHERE t.user_id = $1\n' +
+    '      ORDER BY t.created_at DESC\n' +
+    '      LIMIT 5',
+  duration: 2,
+  rows: 4
+}
+Executed query {
+  text: 'SELECT \n' +
+    '        t.id, t.title, t.status, t.priority, t.due_date,\n' +
+    '        c.name as category_name, c.color as category_color\n' +
+    '      FROM tasks t\n' +
+    '      LEFT JOIN categories c ON t.category_id = c.id\n' +
+    '      WHERE t.user_id = $1 \n' +
+    "        AND t.due_date BETWEEN CURRENT_DATE AND CURRENT_DATE + INTERVAL '7 days'\n" +
+    "        AND t.status != 'completed'\n" +
+    '      ORDER BY t.due_date ASC\n' +
+    '      LIMIT 5',
+  duration: 10,
+  rows: 1
+}
+::1 - - [21/Aug/2025:11:59:51 +0000] "GET /api/users/dashboard HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+Executed query {
+  text: 'SELECT id, name, email, avatar_url, created_at FROM users WHERE id = $1',
+  duration: 3,
+  rows: 1
+}
+Executed query {
+  text: 'SELECT \n' +
+    '        COUNT(*) as total_tasks,\n' +
+    "        COUNT(CASE WHEN status = 'completed' THEN 1 END) as completed_tasks,\n" +
+    "        COUNT(CASE WHEN status = 'pending' THEN 1 END) as pending_tasks,\n" +
+    "        COUNT(CASE WHEN status = 'in_progress' THEN 1 END) as in_progress_tasks,\n" +
+    "        COUNT(CASE WHEN due_date < CURRENT_DATE AND status != 'completed' THEN 1 END) as overdue_tasks,\n" +
+    "        COUNT(CASE WHEN due_date = CURRENT_DATE AND status != 'completed' THEN 1 END) as due_today_tasks\n" +
+    '      FROM tasks \n' +
+    '      WHERE user_id = $1',
+  duration: 9,
+  rows: 1
+}
+Executed query {
+  text: 'SELECT \n' +
+    '        t.id, t.title, t.status, t.priority, t.due_date, t.created_at,\n' +
+    '        c.name as category_name, c.color as category_color\n' +
+    '      FROM tasks t\n' +
+    '      LEFT JOIN categories c ON t.category_id = c.id\n' +
+    '      WHERE t.user_id = $1\n' +
+    '      ORDER BY t.created_at DESC\n' +
+    '      LIMIT 5',
+  duration: 2,
+  rows: 4
+}
+Executed query {
+  text: 'SELECT \n' +
+    '        t.id, t.title, t.status, t.priority, t.due_date,\n' +
+    '        c.name as category_name, c.color as category_color\n' +
+    '      FROM tasks t\n' +
+    '      LEFT JOIN categories c ON t.category_id = c.id\n' +
+    '      WHERE t.user_id = $1 \n' +
+    "        AND t.due_date BETWEEN CURRENT_DATE AND CURRENT_DATE + INTERVAL '7 days'\n" +
+    "        AND t.status != 'completed'\n" +
+    '      ORDER BY t.due_date ASC\n' +
+    '      LIMIT 5',
+  duration: 2,
+  rows: 1
+}
+::1 - - [21/Aug/2025:11:59:51 +0000] "GET /api/users/dashboard HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
