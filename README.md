@@ -123,8 +123,7 @@ NODE_ENV=development
 ## Default Users
 
 After running the schema, you can use these test accounts:
-- Email: admin@example.com, Password: admin123
-- Email: user@example.com, Password: user123
+- Example Email: admin@example.com, Password: admin123
 
 ## Ready for Deployment
 
@@ -135,3 +134,6 @@ This application is ready for deployment on AWS with:
 - Database connection pooling
 - CORS configuration
 - Input validation and sanitization
+
+For insfracture creation for EC2 wee can use terraform script given in terraform_script.md or [https://github.com/NipurJain4/terraform-task-manager.git]
+and other RDS and secreat we will create manaually.
